@@ -38,6 +38,7 @@ final class LoginViewModel: ObservableObject {
         username = ""
         password = ""
         isGuest = false
+        validationMessage = nil
     }
 
     /// Skips login screen if a valid token already exists.
