@@ -18,6 +18,7 @@ struct LoginView: View {
     
     var body: some View {
         VStack(spacing: 24) {
+            
             // Title
             Text("League Social")
                 .font(.largeTitle)
@@ -34,12 +35,14 @@ struct LoginView: View {
                 SecureField("Password", text: $viewModel.password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
+                // Validation Message
                 if let message = viewModel.validationMessage {
                     Text(message)
                         .font(.footnote)
                         .foregroundColor(.red)
                 }
                 
+                // Error Message
                 if case .failure(let error) = viewModel.state {
                     Text(error)
                         .font(.caption)
@@ -47,8 +50,9 @@ struct LoginView: View {
                 }
             }
             
-            // Login Buttons
             VStack(spacing: 16) {
+                
+                // Login Button
                 Button(action: {
                     Task {
                         guard viewModel.validateInputs() else { return }
@@ -63,8 +67,9 @@ struct LoginView: View {
                         .cornerRadius(10)
                 }
                 
+                // Guest Button
                 Button(action: {
-                    Task { await viewModel.login() }
+                    Task { await viewModel.login(isGuest: true) }
                 }) {
                     Text("Continue as Guest")
                         .frame(maxWidth: .infinity)
@@ -88,9 +93,9 @@ struct LoginView: View {
         .padding(24)
         .background(Color.teal.opacity(0.14))
         .onAppear {
-            // Reset view state and check for authenticated user
+            // Reset view state and check for valid token
             viewModel.resetState()
-            viewModel.checkIfAlreadyAuthenticated()
+            viewModel.isTokenValid()
         }
         .onChange(of: viewModel.state) { _, state in
             // Authenticate user when login state changes to success
@@ -99,7 +104,10 @@ struct LoginView: View {
             }
         }
         .navigationDestination(isPresented: $isAuthenticated) {
-            PostListView(viewModel: PostListViewModel(api: dependencies.apiService))
+            PostListView(viewModel: PostListViewModel(
+                api: dependencies.apiService,
+                isGuest: viewModel.isGuest
+            ))
         }
     }
 }

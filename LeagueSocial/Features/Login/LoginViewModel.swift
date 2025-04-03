@@ -9,6 +9,7 @@ import Foundation
 
 @MainActor
 final class LoginViewModel: ObservableObject {
+    @Published var isGuest = false
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var state: LoginState = .idle
@@ -20,9 +21,10 @@ final class LoginViewModel: ObservableObject {
     }
     
     /// Calls the login api service to authenticate user
-    func login() async {
+    func login(isGuest: Bool = false) async {
         do {
             state = .loading
+            self.isGuest = isGuest
             let token = try await api.login(username: username, password: password)
             state = .success(token: token)
         } catch {
@@ -35,10 +37,11 @@ final class LoginViewModel: ObservableObject {
         state = .idle
         username = ""
         password = ""
+        isGuest = false
     }
     
     /// Skips login screen if a valid token already exists.
-    func checkIfAlreadyAuthenticated() {
+    func isTokenValid() {
         if let token = api.authToken(), !token.isEmpty {
             state = .success(token: token)
         }
