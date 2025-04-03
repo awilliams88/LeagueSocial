@@ -1,0 +1,100 @@
+# Xcode
+#
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+**/UserInterfaceState.xcuserstate
+
+# SwiftPM
+#
+Packages/
+.swiftpm/xcode/package.xcworkspace/
+.swiftpm/
+
+# CocoaPods
+#
+Pods/
+Podfile.lock
+Podfile.swp
+
+# Carthage
+#
+Carthage/Build/
+Carthage/Checkouts/
+Carthage/DerivedData/
+
+# Fastlane
+#
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Archives
+#
+*.xcarchive
+
+# Xcode automatically generated
+#
+*.xcuserstate
+
+# Playgrounds
+#
+timeline.xctimeline
+playground.xcworkspace
+
+# App files
+#
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Provisioning profiles
+#
+*.mobileprovision
+
+# Other
+#
+*.moved-aside
+*.xcuserdatad
+*.swp
+*.lock
+.DS_Store
+.idea/
+.vscode/
+
+# Swift Package Manager (SPM)
+#
+.build/
+Artifacts/
+
+# SPM Plugins
+.swiftpm/
+
+# Package resolved
+Package.resolved
+
+# Logs
+#
+*.log
+
+# Temporary files
+#
+*.tmp
+*.temp
+*.orig
+
+# Firebase
+GoogleService-Info.plist
+
+
