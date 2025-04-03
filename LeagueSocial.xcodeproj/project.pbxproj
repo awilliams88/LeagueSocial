@@ -17,6 +17,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C1DDB242D9ECEE100A0BE44 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7CD94CB72D9E5D3100B503BF /* LeagueSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeagueSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD94CC72D9E5D3200B503BF /* LeagueSocialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeagueSocialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -55,6 +56,7 @@
 		7CD94CAE2D9E5D3100B503BF = {
 			isa = PBXGroup;
 			children = (
+				7C1DDB242D9ECEE100A0BE44 /* README.md */,
 				7CD94CB92D9E5D3100B503BF /* LeagueSocial */,
 				7CD94CCA2D9E5D3200B503BF /* LeagueSocialTests */,
 				7CD94CB82D9E5D3100B503BF /* Products */,
