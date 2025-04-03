@@ -24,35 +24,6 @@ final class APIService: APIServiceProtocol {
 // MARK: - Public Methods
 extension APIService {
     
-    /// Logs in the user using username and password, and stores the access token in Keychain.
-    /// - Parameters:
-    ///   - username: The username for login.
-    ///   - password: The password for login.
-    /// - Returns: Access token string if successful.
-    func login(username: String, password: String) async throws -> String {
-        guard let url = APIEndpoints.login, var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
-            throw NetworkError.invalidURL
-        }
-        
-        components.queryItems = [
-            URLQueryItem(name: "username", value: username),
-            URLQueryItem(name: "password", value: password)
-        ]
-        
-        guard let url = components.url else {
-            throw NetworkError.invalidURL
-        }
-        
-        let request = URLRequest(url: url)
-        let data = try await perform(request: request, requiresAuth: false)
-        
-        // Decode and persist token in key chain token store
-        let token = try JSONDecoder().decode(Token.self, from: data)
-        tokenStore.saveToken(token.key)
-        
-        return token.key
-    }
-    
     /// Fetches the list of posts. Requires a valid access token.
     /// - Returns: Array of `Post` objects.
     func fetchPosts() async throws -> [Post] {
@@ -69,7 +40,37 @@ extension APIService {
         return try JSONDecoder().decode([User].self, from: data)
     }
     
-    /// Deletes store token from token store
+    /// Logs in the user using username and password, and stores the access token in Keychain.
+    /// - Parameters:
+    ///   - username: The username for login.
+    ///   - password: The password for login.
+    /// - Returns: Access token string if successful.
+    func login(username: String, password: String) async throws -> String {
+        
+        // Create url with components
+        guard let url = APIEndpoints.login,
+              var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        else { throw NetworkError.invalidURL }
+        
+        // Add query items to components
+        components.queryItems = [
+            URLQueryItem(name: "username", value: username),
+            URLQueryItem(name: "password", value: password)
+        ]
+        
+        // Create request and fetch response data
+        guard let url = components.url else { throw NetworkError.invalidURL }
+        let request = URLRequest(url: url)
+        let data = try await perform(request: request, requiresAuth: false)
+        
+        // Decode and persist token in key chain token store
+        let token = try JSONDecoder().decode(Token.self, from: data)
+        tokenStore.saveToken(token.key)
+        
+        return token.key
+    }
+    
+    /// Deletes stored token from key chain token store
     func logout() {
         tokenStore.deleteToken()
     }
@@ -102,7 +103,6 @@ extension APIService {
     /// Performs the request and handles basic response validation.
     private func perform(request: URLRequest, requiresAuth: Bool = true) async throws -> Data {
         let (data, response) = try await session.data(for: request)
-        
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkError.noData
         }
