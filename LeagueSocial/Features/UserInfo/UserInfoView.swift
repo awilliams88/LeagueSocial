@@ -14,6 +14,7 @@ struct UserInfoView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
+
                 // Avatar
                 AsyncImage(url: user.avatar) { phase in
                     switch phase {
@@ -50,6 +51,7 @@ struct UserInfoView: View {
                     .foregroundColor(Color(.darkGray))
 
                 HStack(spacing: 4) {
+
                     // User Email
                     Text(user.email)
                         .font(.headline)
@@ -70,6 +72,7 @@ struct UserInfoView: View {
             .background(Color.mint.opacity(0.24))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
+  
                     // Dismiss Button
                     Button { dismiss() } label: {
                         Image(systemName: "xmark")

@@ -17,11 +17,7 @@ public final class KeychainTokenStore: TokenStore {
         guard let data = token.data(using: .utf8) else { return false }
 
         // Remove any existing token to avoid duplicates
-        let deleteQuery: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: tokenKey,
-        ]
-        SecItemDelete(deleteQuery as CFDictionary)
+        _ = deleteToken()
 
         // Add the new token
         let addQuery: [String: Any] = [

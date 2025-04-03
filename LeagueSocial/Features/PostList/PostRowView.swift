@@ -14,6 +14,7 @@ struct PostRowView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             VStack(spacing: 8) {
+
                 // Avator image
                 AsyncImage(url: post.user?.avatar) { phase in
                     switch phase {

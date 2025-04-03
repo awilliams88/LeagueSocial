@@ -18,6 +18,7 @@ struct LoginView: View {
 
     var body: some View {
         VStack(spacing: 24) {
+
             // Title
             Text("League Social")
                 .font(.largeTitle)
@@ -50,6 +51,7 @@ struct LoginView: View {
             }
 
             VStack(spacing: 16) {
+
                 // Login Button
                 Button(action: {
                     Task {

@@ -18,6 +18,7 @@ struct PostListView: View {
     }
 
     var body: some View {
+
         // List View
         List {
             ForEach(viewModel.posts) { post in
@@ -32,9 +33,11 @@ struct PostListView: View {
         // List Background
         .scrollContentBackground(.hidden)
         .background(Color(.mint.opacity(0.2)))
+
         // Navigation bar
         .navigationTitle("Posts")
         .navigationBarBackButtonHidden(true)
+
         // Toolbar
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -61,6 +64,7 @@ struct PostListView: View {
         .alert("Error", isPresented: .constant(viewModel.errorMessage != nil)) {
             Button("OK", role: .cancel) { viewModel.errorMessage = nil }
         } message: { Text(viewModel.errorMessage ?? "") }
+
         // Exit Alert
         .alert("Thank you for trialing this app 🙏", isPresented: $showExitAlert) {
             Button("Cancel", role: .cancel) {}
@@ -69,6 +73,7 @@ struct PostListView: View {
 
         // User Info View
         .sheet(item: $selectedUser) { UserInfoView(user: $0) }
+
         // Load Posts
         .task { await viewModel.loadPosts() }
     }
