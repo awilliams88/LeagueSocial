@@ -12,6 +12,9 @@ struct LeagueSocialApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.dependencies, Container(
+                    apiService: APIService()
+                ))
         }
     }
 }
