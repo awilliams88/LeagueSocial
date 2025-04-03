@@ -14,12 +14,12 @@ final class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var state: LoginState = .idle
     @Published var validationMessage: String?
-    
+
     private let api: APIServiceProtocol
     init(api: APIServiceProtocol) {
         self.api = api
     }
-    
+
     /// Calls the login api service to authenticate user
     func login(isGuest: Bool = false) async {
         do {
@@ -31,7 +31,7 @@ final class LoginViewModel: ObservableObject {
             state = .failure(error: error.localizedDescription)
         }
     }
-    
+
     /// Resets state of view model
     func resetState() {
         state = .idle
@@ -39,26 +39,26 @@ final class LoginViewModel: ObservableObject {
         password = ""
         isGuest = false
     }
-    
+
     /// Skips login screen if a valid token already exists.
     func isTokenValid() {
         if let token = api.authToken(), !token.isEmpty {
             state = .success(token: token)
         }
     }
-    
+
     /// Validates text input for username and password fields.
     func validateInputs() -> Bool {
         if username.trimmingCharacters(in: .whitespaces).count < 4 {
             validationMessage = "Username must be at least 4 characters."
             return false
         }
-        
+
         if password.count < 6 {
             validationMessage = "Password must be at least 6 characters."
             return false
         }
-        
+
         validationMessage = nil
         return true
     }

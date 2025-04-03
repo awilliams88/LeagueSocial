@@ -10,6 +10,6 @@ public final class MockAPIService: APIServiceProtocol {
     func logout() {}
     func authToken() -> String? { "1234" }
     func fetchPosts() async throws -> [Post] { Post.mock }
-    func fetchUsers() async throws -> [User] { [ User.userA, User.userB ] }
-    func login(username: String, password: String) async throws -> String { ""}
+    func fetchUsers() async throws -> [User] { [User.userA, User.userB] }
+    func login(username _: String, password _: String) async throws -> String { "" }
 }

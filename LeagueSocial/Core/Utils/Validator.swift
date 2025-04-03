@@ -5,8 +5,7 @@
 //  Created by Arpit Williams on 03/04/25.
 //
 
-struct Validator {
-    
+enum Validator {
     /// Checks if the user's email ends with a valid domain extension (.com, .net, or .biz).
     static func isValidEmailDomain(_ email: String) -> Bool {
         guard let ext = email.split(separator: ".").last?.lowercased() else { return false }

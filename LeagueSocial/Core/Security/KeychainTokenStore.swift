@@ -10,7 +10,6 @@ import Security
 
 /// A Keychain-based implementation of `TokenStore` for secure token storage.
 public final class KeychainTokenStore: TokenStore {
-    
     private let tokenKey = "com.leaguesocial.token"
 
     /// Saves the token to the Keychain. Overwrites any existing token.
@@ -20,7 +19,7 @@ public final class KeychainTokenStore: TokenStore {
         // Remove any existing token to avoid duplicates
         let deleteQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: tokenKey
+            kSecAttrAccount as String: tokenKey,
         ]
         SecItemDelete(deleteQuery as CFDictionary)
 
@@ -28,7 +27,7 @@ public final class KeychainTokenStore: TokenStore {
         let addQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: tokenKey,
-            kSecValueData as String: data
+            kSecValueData as String: data,
         ]
 
         return SecItemAdd(addQuery as CFDictionary, nil) == errSecSuccess
@@ -40,7 +39,7 @@ public final class KeychainTokenStore: TokenStore {
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: tokenKey,
             kSecReturnData as String: true,
-            kSecMatchLimit as String: kSecMatchLimitOne
+            kSecMatchLimit as String: kSecMatchLimitOne,
         ]
 
         var result: AnyObject?
@@ -54,7 +53,7 @@ public final class KeychainTokenStore: TokenStore {
     public func deleteToken() -> Bool {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: tokenKey
+            kSecAttrAccount as String: tokenKey,
         ]
         return SecItemDelete(query as CFDictionary) == errSecSuccess
     }

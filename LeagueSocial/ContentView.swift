@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.dependencies) private var dependencies
-    
+
     var body: some View {
         NavigationStack {
             LoginView(viewModel: LoginViewModel(api: dependencies.apiService))

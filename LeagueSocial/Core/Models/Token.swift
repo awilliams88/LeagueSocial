@@ -9,7 +9,7 @@ import Foundation
 
 struct Token: Codable {
     let key: String
-    
+
     enum CodingKeys: String, CodingKey {
         case key = "api_key"
     }

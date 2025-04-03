@@ -20,6 +20,6 @@ struct Post: Identifiable, Codable {
 extension Post {
     static let mock: [Post] = [
         Post(id: 1, userId: 101, title: "Welcome to League", body: "This is your first post.", user: User.userA),
-        Post(id: 2, userId: 102, title: "SwiftUI Rocks", body: "Loving the declarative way!", user: User.userB)
+        Post(id: 2, userId: 102, title: "SwiftUI Rocks", body: "Loving the declarative way!", user: User.userB),
     ]
 }

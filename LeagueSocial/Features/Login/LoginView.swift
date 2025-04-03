@@ -11,47 +11,45 @@ struct LoginView: View {
     @State private var isAuthenticated = false
     @StateObject private var viewModel: LoginViewModel
     @Environment(\.dependencies) private var dependencies
-    
+
     init(viewModel: LoginViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-    
+
     var body: some View {
         VStack(spacing: 24) {
-            
             // Title
             Text("League Social")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.bottom, 24)
-            
+
             // Form Fields
             VStack(spacing: 16) {
                 TextField("Username", text: $viewModel.username)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-                
+
                 SecureField("Password", text: $viewModel.password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                
+
                 // Validation Message
                 if let message = viewModel.validationMessage {
                     Text(message)
                         .font(.footnote)
                         .foregroundColor(.red)
                 }
-                
+
                 // Error Message
-                if case .failure(let error) = viewModel.state {
+                if case let .failure(error) = viewModel.state {
                     Text(error)
                         .font(.caption)
                         .foregroundColor(.red)
                 }
             }
-            
+
             VStack(spacing: 16) {
-                
                 // Login Button
                 Button(action: {
                     Task {
@@ -66,7 +64,7 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
-                
+
                 // Guest Button
                 Button(action: {
                     Task { await viewModel.login(isGuest: true) }
@@ -80,14 +78,14 @@ struct LoginView: View {
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 34)
-            
+
             // Progress View
             if case .loading = viewModel.state {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
                     .padding(.top)
             }
-            
+
             Spacer()
         }
         .padding(24)

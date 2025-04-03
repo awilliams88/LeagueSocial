@@ -10,18 +10,17 @@ import SwiftUI
 struct UserInfoView: View {
     let user: User
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                
                 // Avatar
                 AsyncImage(url: user.avatar) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
                             .frame(width: 280, height: 280)
-                    case .success(let image):
+                    case let .success(image):
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -37,27 +36,26 @@ struct UserInfoView: View {
                     }
                 }
                 .padding()
-                
+
                 // Name
                 Text(user.name)
                     .bold()
                     .font(.largeTitle)
                     .multilineTextAlignment(.center)
-                
+
                 // Username
                 Text("@\(user.username)")
                     .font(.title)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(.darkGray))
-                
+
                 HStack(spacing: 4) {
-                    
                     // User Email
                     Text(user.email)
                         .font(.headline)
                         .fontWeight(.medium)
                         .foregroundColor(isValidEmailDomain ? .green : .red)
-                    
+
                     // Email Validation
                     if !isValidEmailDomain {
                         Image(systemName: "exclamationmark.triangle.fill")
@@ -65,16 +63,15 @@ struct UserInfoView: View {
                             .accessibilityLabel("Invalid email domain")
                     }
                 }
-                
+
                 Spacer()
             }
             .padding()
             .background(Color.mint.opacity(0.24))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    
                     // Dismiss Button
-                    Button {  dismiss() } label: {
+                    Button { dismiss() } label: {
                         Image(systemName: "xmark")
                             .imageScale(.large)
                             .foregroundColor(.black)
@@ -82,9 +79,8 @@ struct UserInfoView: View {
                 }
             }
         }
-        
     }
-    
+
     private var isValidEmailDomain: Bool {
         Validator.isValidEmailDomain(user.email)
     }

@@ -18,7 +18,6 @@ struct User: Identifiable, Codable {
 // MARK: - Mocks
 
 extension User {
-    
     static let userA = User(
         id: 101,
         avatar: URL(string: "https://i.pravatar.cc/150?u=Sincere@april.biz")!,
@@ -26,7 +25,7 @@ extension User {
         email: "axl@league.biz",
         username: "axlrose"
     )
-    
+
     static let userB = User(
         id: 102,
         avatar: URL(string: "https://example.co/avatar.png")!,
