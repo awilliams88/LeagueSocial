@@ -21,10 +21,10 @@ extension User {
     
     static let userA = User(
         id: 101,
-        avatar: URL(string: "https://example.co/avatar.png")!,
-        name: "Arpit Williams",
-        email: "arpit@league.dev",
-        username: "arpit"
+        avatar: URL(string: "https://i.pravatar.cc/150?u=Sincere@april.biz")!,
+        name: "Axl Rose",
+        email: "axl@league.biz",
+        username: "axlrose"
     )
     
     static let userB = User(

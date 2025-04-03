@@ -56,25 +56,17 @@ struct PostListView: View {
         }
         // Error Alert
         .alert("Error", isPresented: .constant(viewModel.errorMessage != nil)) {
-            Button("OK", role: .cancel) {
-                viewModel.errorMessage = nil
-            }
-        } message: {
-            Text(viewModel.errorMessage ?? "")
-        }
+            Button("OK", role: .cancel) { viewModel.errorMessage = nil }
+        } message: { Text(viewModel.errorMessage ?? "") }
         // Exit Alert
-        .alert("Exit Guest Session?", isPresented: $showExitAlert) {
+        .alert("Thank you for trialing this app 🙏", isPresented: $showExitAlert) {
             Button("Cancel", role: .cancel) { }
             Button("Exit", role: .destructive) { dismiss() }
-        } message: {
-            Text("You’re currently logged in as a guest.")
-        }
+        } message: { Text("You’re currently logged in as a guest.") }
         // User Info View
-        .sheet(item: $selectedUser) { _ in }
+        .sheet(item: $selectedUser) { UserInfoView(user: $0) }
         // Load Posts
-        .task {
-            await viewModel.loadPosts()
-        }
+        .task { await viewModel.loadPosts() }
     }
 }
 
