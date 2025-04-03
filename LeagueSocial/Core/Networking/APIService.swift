@@ -73,6 +73,12 @@ extension APIService {
     func logout() {
         tokenStore.deleteToken()
     }
+    
+    /// Returns stored token from keychain store if it exists
+    func authToken() -> String? {
+        guard let token = tokenStore.loadToken() else { return nil }
+        return token
+    }
 }
 
 // MARK: - Private Helpers
