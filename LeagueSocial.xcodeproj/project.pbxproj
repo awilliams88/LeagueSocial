@@ -14,19 +14,11 @@
 			remoteGlobalIDString = 7CD94CB62D9E5D3100B503BF;
 			remoteInfo = LeagueSocial;
 		};
-		7CD94CD22D9E5D3200B503BF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7CD94CAF2D9E5D3100B503BF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7CD94CB62D9E5D3100B503BF;
-			remoteInfo = LeagueSocial;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7CD94CB72D9E5D3100B503BF /* LeagueSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeagueSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD94CC72D9E5D3200B503BF /* LeagueSocialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeagueSocialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CD94CD12D9E5D3200B503BF /* LeagueSocialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeagueSocialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -38,11 +30,6 @@
 		7CD94CCA2D9E5D3200B503BF /* LeagueSocialTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = LeagueSocialTests;
-			sourceTree = "<group>";
-		};
-		7CD94CD42D9E5D3200B503BF /* LeagueSocialUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LeagueSocialUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -62,13 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7CD94CCE2D9E5D3200B503BF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,7 +57,6 @@
 			children = (
 				7CD94CB92D9E5D3100B503BF /* LeagueSocial */,
 				7CD94CCA2D9E5D3200B503BF /* LeagueSocialTests */,
-				7CD94CD42D9E5D3200B503BF /* LeagueSocialUITests */,
 				7CD94CB82D9E5D3100B503BF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,7 +66,6 @@
 			children = (
 				7CD94CB72D9E5D3100B503BF /* LeagueSocial.app */,
 				7CD94CC72D9E5D3200B503BF /* LeagueSocialTests.xctest */,
-				7CD94CD12D9E5D3200B503BF /* LeagueSocialUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,29 +118,6 @@
 			productReference = 7CD94CC72D9E5D3200B503BF /* LeagueSocialTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7CD94CD02D9E5D3200B503BF /* LeagueSocialUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7CD94CE12D9E5D3200B503BF /* Build configuration list for PBXNativeTarget "LeagueSocialUITests" */;
-			buildPhases = (
-				7CD94CCD2D9E5D3200B503BF /* Sources */,
-				7CD94CCE2D9E5D3200B503BF /* Frameworks */,
-				7CD94CCF2D9E5D3200B503BF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7CD94CD32D9E5D3200B503BF /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				7CD94CD42D9E5D3200B503BF /* LeagueSocialUITests */,
-			);
-			name = LeagueSocialUITests;
-			packageProductDependencies = (
-			);
-			productName = LeagueSocialUITests;
-			productReference = 7CD94CD12D9E5D3200B503BF /* LeagueSocialUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,10 +132,6 @@
 						CreatedOnToolsVersion = 16.2;
 					};
 					7CD94CC62D9E5D3200B503BF = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 7CD94CB62D9E5D3100B503BF;
-					};
-					7CD94CD02D9E5D3200B503BF = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 7CD94CB62D9E5D3100B503BF;
 					};
@@ -202,7 +153,6 @@
 			targets = (
 				7CD94CB62D9E5D3100B503BF /* LeagueSocial */,
 				7CD94CC62D9E5D3200B503BF /* LeagueSocialTests */,
-				7CD94CD02D9E5D3200B503BF /* LeagueSocialUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,13 +166,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7CD94CC52D9E5D3200B503BF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CD94CCF2D9E5D3200B503BF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -246,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7CD94CCD2D9E5D3200B503BF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -260,11 +196,6 @@
 			isa = PBXTargetDependency;
 			target = 7CD94CB62D9E5D3100B503BF /* LeagueSocial */;
 			targetProxy = 7CD94CC82D9E5D3200B503BF /* PBXContainerItemProxy */;
-		};
-		7CD94CD32D9E5D3200B503BF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7CD94CB62D9E5D3100B503BF /* LeagueSocial */;
-			targetProxy = 7CD94CD22D9E5D3200B503BF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -480,38 +411,6 @@
 			};
 			name = Release;
 		};
-		7CD94CE22D9E5D3200B503BF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.league.LeagueSocialUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LeagueSocial;
-			};
-			name = Debug;
-		};
-		7CD94CE32D9E5D3200B503BF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.league.LeagueSocialUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LeagueSocial;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -538,15 +437,6 @@
 			buildConfigurations = (
 				7CD94CDF2D9E5D3200B503BF /* Debug */,
 				7CD94CE02D9E5D3200B503BF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7CD94CE12D9E5D3200B503BF /* Build configuration list for PBXNativeTarget "LeagueSocialUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7CD94CE22D9E5D3200B503BF /* Debug */,
-				7CD94CE32D9E5D3200B503BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
