@@ -17,11 +17,10 @@ final class LoginViewModel: ObservableObject {
     private let api: APIServiceProtocol
     init(api: APIServiceProtocol) {
         self.api = api
-        checkIfAlreadyAuthenticated()
     }
     
+    /// Calls the login api service to authenticate user
     func login() async {
-        guard validateInputs() else { return }
         do {
             state = .loading
             let token = try await api.login(username: username, password: password)
@@ -31,18 +30,22 @@ final class LoginViewModel: ObservableObject {
         }
     }
     
-    func continueAsGuest() {
-        state = .success(token: "")
-        validationMessage = nil
+    /// Resets state of view model
+    func resetState() {
+        state = .idle
+        username = ""
+        password = ""
     }
     
-    private func checkIfAlreadyAuthenticated() {
-        if let token = api.authToken() {
+    /// Skips login screen if a valid token already exists.
+    func checkIfAlreadyAuthenticated() {
+        if let token = api.authToken(), !token.isEmpty {
             state = .success(token: token)
         }
     }
     
-    private func validateInputs() -> Bool {
+    /// Validates text input for username and password fields.
+    func validateInputs() -> Bool {
         if username.trimmingCharacters(in: .whitespaces).count < 4 {
             validationMessage = "Username must be at least 4 characters."
             return false
