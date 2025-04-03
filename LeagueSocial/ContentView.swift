@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.dependencies) private var dependencies
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            LoginView(viewModel: LoginViewModel(api: dependencies.apiService))
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
+        .environment(\.dependencies, Container(apiService: MockAPIService()))
 }
