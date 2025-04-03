@@ -63,7 +63,9 @@ extension APIService {
         let data = try await perform(request: request, requiresAuth: false)
 
         // Decode and persist token in key chain token store
-        let token = try JSONDecoder().decode(Token.self, from: data)
+        guard let token = try? JSONDecoder().decode(Token.self, from: data) else {
+            throw NetworkError.decodingFailed
+        }
         tokenStore.saveToken(token.key)
 
         return token.key
