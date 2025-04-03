@@ -14,3 +14,24 @@ struct User: Identifiable, Codable {
     let email: String
     let username: String
 }
+
+// MARK: - Mocks
+
+extension User {
+    
+    static let userA = User(
+        id: 101,
+        avatar: URL(string: "https://example.co/avatar.png")!,
+        name: "Arpit Williams",
+        email: "arpit@league.dev",
+        username: "arpit"
+    )
+    
+    static let userB = User(
+        id: 102,
+        avatar: URL(string: "https://example.co/avatar.png")!,
+        name: "Jane Doe",
+        email: "jane@league.dev",
+        username: "jdoe"
+    )
+}
